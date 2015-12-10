@@ -15,9 +15,8 @@ var FluxDays = React.createClass({
 
 
     editPrompt: function(useData) {
-        console.log(useData);
-        FluxActions.updateEditVisible(true);
         FluxActions.useData(useData);
+        FluxActions.updateEditVisible(true);
     },
 
     buildDays: function() {

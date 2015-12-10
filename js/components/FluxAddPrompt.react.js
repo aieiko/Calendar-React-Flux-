@@ -30,7 +30,7 @@ var FluxAddPrompt = React.createClass({
 
     addData: function() {
         var update = {
-            ip: Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000,
+            id: Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000,
             name: this.state.fname,
             date: this.state.fdate.match(/\d+/g),
             participants: this.state.fparticipants,

@@ -25,7 +25,7 @@ var FluxFastAdd = React.createClass({
         var str = this.state.fastInput.match(/\d+/g);
         var name = this.state.fastInput.split(',');
         var fastUpdate = {
-            ip: Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000,
+            id: Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000,
             name: name[1],
             date: [str[0], str[1], new Date().getFullYear()],
             participants: '',
