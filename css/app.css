@@ -1,0 +1,46 @@
+.adr {
+    float: left;
+    width: 14%;
+    height: 150px;
+    border: 1px solid rgb(218, 216, 216);
+
+}
+.flux-app {
+    margin: 1%;
+}
+.day {
+    display: inline-block;
+    width: 14%;
+}
+.header {
+    width: 20%;
+    margin: auto;
+}
+.hol {
+    width: 30%;
+    background-color: rebeccapurple;
+    position: absolute;
+    margin-top: 15%;
+    left: 33%;
+    height: 500px;
+    display: none;
+}
+.hol.active {
+    display: block;
+}
+.close, .search {
+    float: right;
+}
+.elem_in_search {
+    position: absolute;
+    background-color: white;
+    right: 1.5%;
+    width: 170px;
+}
+.none {
+    display: none;
+}
+.fast_add {
+    width: 13%;
+    position: absolute;
+}

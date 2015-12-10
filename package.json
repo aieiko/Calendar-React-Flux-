@@ -1,0 +1,29 @@
+{
+  "name": "Calendar-React-Flux",
+  "version": "0.0.1",
+  "description": "Calendar React+Flux",
+  "main": "js/app.js",
+  "dependencies": {
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "envify": "^3.4.0",
+    "flux": "^2.1.1",
+    "keymirror": "^0.1.1",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "reactify": "^1.1.1",
+    "underscore": "^1.8.3",
+    "watchify": "^3.6.1"
+  },
+  "scripts": {
+    "start": "watchify -o js/bundle.js -v -d .",
+    "build": "browserify . | uglifyjs -cm > js/bundle.min.js"
+  },
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  }
+}
