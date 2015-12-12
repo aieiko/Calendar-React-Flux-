@@ -17,35 +17,40 @@ var FluxDays = React.createClass({
     },
 
     buildDays: function() {
-        var getDays = function(n, days, fday) {
+        var getDays = function(n, days, month, year, fday) {
             "use strict"
             var mass = [];
             var valid = 0;
 
-            if(fday == 0) fday= 7;
+            if(fday == 0) fday = 7;
+            var prevMonthdays = 35 - new Date(year, month-1, 33).getDate() - fday;
+            var nextMonthdays = 1;
 
-            for(let i=1; i<=n; i++) {
+            for(let i=1; i <= n; i++) {
 
                 if(i> days+valid) {
-                    mass[i] = { d:''}
+                    mass[i] = { d: nextMonthdays };
+                    nextMonthdays++;
                 }
-                else if(i< fday){
-                        mass[i] = { d: ''}
-                        valid++;
+                else if(i< fday) {
+                    mass[i] = { d: prevMonthdays };
+                    valid++;
+                    prevMonthdays++;
+
                 } else {
-                    if(valid >= 1){
-                        mass[i] = { d:i-valid}
+                    if(valid >= 1) {
+                        mass[i] = { d: i-valid };
                     } else {
-                        mass[i] = { d:i}
+                        mass[i] = { d: i };
                     }
 
                 }
-                if(mass.length>n) return mass;
+                if(mass.length > n) return mass;
 
             }
 
         };
-        var massDays = getDays(42, this.props.days, this.props.fday);
+        var massDays = getDays(42, this.props.days, this.props.month, this.props.year, this.props.fday);
 
         return massDays.map((day, index) => {
             return <div className="adr" onClick={this.addPrompt} key={index}>{day.d} {this.props.data.map((data, index) => {
