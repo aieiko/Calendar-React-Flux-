@@ -6,9 +6,6 @@ var FluxActions = require('../actions/FluxActions');
 
 var FluxDays = React.createClass({
 
-    /*addEvent: function(event) {
-
-    }*/
     addPrompt: function() {
         FluxActions.updateVisible(true);
     },

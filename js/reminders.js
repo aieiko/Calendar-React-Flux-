@@ -1,9 +1,7 @@
 /**
  * Created by aieiko on 08.12.15.
  */
-/**
- * Created by aieiko on 06.12.15.
- */
+
 module.exports = {
     //data localStorage
     init: function() {

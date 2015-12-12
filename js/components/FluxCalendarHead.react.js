@@ -11,6 +11,12 @@ var FluxCalendarHead = React.createClass({
         }
     },
 
+    changeDate: function(date) {
+        var goToDate = new Date(date[2], date[1]);
+        this.setState({filter: ''});
+        FluxActions.changeDate(goToDate);
+    },
+
     handleFilter: function(event) {
         this.setState({filter: event.target.value})
     },
@@ -23,11 +29,10 @@ var FluxCalendarHead = React.createClass({
     elemInSearch: function() {
         return(
             <div className="elem_in_search">{this.props.headdata.map((data, index) => {
-                    if(this.state.filter == '') {
-                    } else {
+                    if(this.state.filter != '') {
                         if(data.name.indexOf(this.state.filter) >= 0 || data.participants.indexOf(this.state.filter) >= 0 || data.date.indexOf(this.state.filter) >= 0){
                             return(
-                                <div key={index}>{data.name}</div>
+                                <div onClick={this.changeDate.bind(this, data.date)} key={index}>{data.name}</div>
                             )
                         }
                     }

@@ -13,19 +13,14 @@ var FluxActions = {
         })
     },
 
-    prevDate: function(newdate) {
+    changeDate: function(newdate) {
       AppDispatcher.handleAction({
-          actionType: FluxConstants.PREV_DATE,
-          prevdate: newdate
+          actionType: FluxConstants.CHANGE_DATE,
+          gotodate: newdate
       })
     },
 
-    nextDate: function(newdate) {
-        AppDispatcher.handleAction({
-            actionType: FluxConstants.NEXT_DATE,
-            nextdate: newdate
-        })
-    },
+
     updateVisible: function(visible) {
         AppDispatcher.handleAction({
             actionType: FluxConstants.FORM_ADD_VISIBLE,
@@ -44,6 +39,7 @@ var FluxActions = {
             formFastVisible: visible
         })
     },
+
     updateData: function(update) {
         AppDispatcher.handleAction({
             actionType: FluxConstants.UPDATE_DATA,

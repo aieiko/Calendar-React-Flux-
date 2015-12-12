@@ -8,22 +8,23 @@ var FluxCalendarDate = React.createClass({
 
     prevDate: function(event) {
         var newDate = new Date();
-        newDate.setMonth(this.props.date.getMonth()-1);
+        newDate.setMonth(this.props.date.getMonth() - 1);
         newDate.setFullYear(this.props.date.getFullYear());
         if(newDate.getMonth() == 11) {
             newDate.setFullYear(this.props.date.getFullYear() - 1);
         }
-        FluxActions.prevDate(newDate);
+        console.log(newDate);
+        FluxActions.changeDate(newDate);
     },
 
     nextDate: function(event) {
         var newDate = new Date();
-        newDate.setMonth(this.props.date.getMonth()+1);
+        newDate.setMonth(this.props.date.getMonth() + 1);
         newDate.setFullYear(this.props.date.getFullYear());
         if(newDate.getMonth() == 0) {
             newDate.setFullYear(this.props.date.getFullYear() + 1);
         }
-        FluxActions.nextDate(newDate);
+        FluxActions.changeDate(newDate);
     },
 
 

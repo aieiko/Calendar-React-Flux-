@@ -5,8 +5,7 @@ var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
     RECEIVE_DATA: null,    // Load
-    PREV_DATE: null,
-    NEXT_DATE: null,
+    CHANGE_DATE: null,
     FORM_ADD_VISIBLE: null,
     FORM_EDIT_VISIBLE: null,
     FORM_FAST_VISIBLE: null,

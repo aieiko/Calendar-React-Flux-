@@ -100,12 +100,8 @@ AppDispatcher.register(function(payload) {
             loadData(action.data);
             break;
 
-        case FluxConstants.PREV_DATE:
-            changeDate(action.prevdate);
-            break;
-
-        case FluxConstants.NEXT_DATE:
-            changeDate(action.nextdate);
+        case FluxConstants.CHANGE_DATE:
+            changeDate(action.gotodate);
             break;
 
         case FluxConstants.FORM_ADD_VISIBLE:
