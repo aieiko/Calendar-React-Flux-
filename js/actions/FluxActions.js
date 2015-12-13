@@ -59,6 +59,12 @@ var FluxActions = {
             actionType: FluxConstants.EDIT_DATA,
             editData: edit
         })
+    },
+    dropThis: function(drop) {
+        AppDispatcher.handleAction({
+            actionType: FluxConstants.DROP_DATA,
+            dropData: drop
+        })
     }
 };
 

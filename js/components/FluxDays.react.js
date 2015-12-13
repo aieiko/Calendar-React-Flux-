@@ -1,24 +1,25 @@
 /**
  * Created by aieiko on 08.12.15.
  */
+"use strict"
 var React = require('react');
 var FluxActions = require('../actions/FluxActions');
 
 var FluxDays = React.createClass({
 
-    addPrompt: function() {
+    addPrompt() {
         FluxActions.updateVisible(true);
     },
 
 
-    editPrompt: function(useData) {
+    editPrompt(useData) {
         FluxActions.useData(useData);
         FluxActions.updateEditVisible(true);
     },
 
-    buildDays: function() {
+    buildDays() {
         var getDays = function(n, days, month, year, fday) {
-            "use strict"
+
             var mass = [];
             var valid = 0;
 
@@ -29,21 +30,36 @@ var FluxDays = React.createClass({
             for(let i=1; i <= n; i++) {
 
                 if(i> days+valid) {
-                    mass[i] = { d: nextMonthdays };
+                    mass[i] = { d:
+                    {
+                        day: nextMonthdays,
+                        style: 'other_month'
+                    } };
                     nextMonthdays++;
                 }
                 else if(i< fday) {
-                    mass[i] = { d: prevMonthdays };
+                    mass[i] = { d:
+                    {
+                        day: prevMonthdays,
+                        style: 'other_month'
+                    } };
                     valid++;
                     prevMonthdays++;
 
                 } else {
                     if(valid >= 1) {
-                        mass[i] = { d: i-valid };
+                        mass[i] = { d:
+                        {
+                            day: i-valid+'',
+                            style: 'this_month'
+                        } };
                     } else {
-                        mass[i] = { d: i };
+                        mass[i] = { d:
+                        {
+                            day: i,
+                            style: 'this_month'
+                        } };
                     }
-
                 }
                 if(mass.length > n) return mass;
 
@@ -52,9 +68,9 @@ var FluxDays = React.createClass({
         };
         var massDays = getDays(42, this.props.days, this.props.month, this.props.year, this.props.fday);
 
-        return massDays.map((day, index) => {
-            return <div className="adr" onClick={this.addPrompt} key={index}>{day.d} {this.props.data.map((data, index) => {
-                if(data.date[0] == day.d && data.date[1] == this.props.month && data.date[2] == this.props.year) {
+        return massDays.map((mday, index) => {
+            return <div className={"adr "+mday.d.style} onClick={this.addPrompt} key={index}>{mday.d.day} {this.props.data.map((data, index) => {
+                if(data.date[0] === mday.d.day && data.date[1] == this.props.month && data.date[2] == this.props.year) {
                     return (
                         <div key={index} onClick={this.editPrompt.bind(this, data)}>
                             <h1 className="name">{data.name}</h1>
@@ -70,7 +86,7 @@ var FluxDays = React.createClass({
         })
     },
 
-    render: function() {
+    render() {
         return(
             <div>
             {this.buildDays()}

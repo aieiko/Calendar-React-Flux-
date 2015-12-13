@@ -6,22 +6,22 @@ var FluxActions = require('../actions/FluxActions');
 
 var FluxFastAdd = React.createClass({
 
-    getInitialState: function() {
+    getInitialState() {
         return {
             fastInput: ''
         }
     },
 
-    closeFastAdd: function() {
+    closeFastAdd() {
         FluxActions.updateFastVisible(false);
         this.setState({fastInput: ''});
     },
 
-    handleFastChange: function(event) {
+    handleFastChange(event) {
         this.setState({fastInput: event.target.value})
     },
 
-    fastCreate: function() {
+    fastCreate() {
         var str = this.state.fastInput.match(/\d+/g);
         var name = this.state.fastInput.split(',');
         var fastUpdate = {
@@ -35,7 +35,7 @@ var FluxFastAdd = React.createClass({
         this.closeFastAdd();
     },
 
-    render: function() {
+    render() {
             return(
                 <div className={"fast_add "+(this.props.fastVis ? 'active' : 'none')}>
                     <button className="close"onClick={this.closeFastAdd}>X</button>

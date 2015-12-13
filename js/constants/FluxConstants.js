@@ -11,5 +11,6 @@ module.exports = keyMirror({
     FORM_FAST_VISIBLE: null,
     UPDATE_DATA: null,
     USE_DATA: null,
-    EDIT_DATA: null
+    EDIT_DATA: null,
+    DROP_DATA: null
 });

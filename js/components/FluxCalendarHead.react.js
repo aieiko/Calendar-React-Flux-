@@ -11,22 +11,22 @@ var FluxCalendarHead = React.createClass({
         }
     },
 
-    changeDate: function(date) {
+    changeDate(date) {
         var goToDate = new Date(date[2], date[1]);
         this.setState({filter: ''});
         FluxActions.changeDate(goToDate);
     },
 
-    handleFilter: function(event) {
+    handleFilter(event) {
         this.setState({filter: event.target.value})
     },
 
-    fastAddVisible: function() {
+    fastAddVisible() {
         FluxActions.updateFastVisible(true);
     },
 
 
-    elemInSearch: function() {
+    elemInSearch() {
         return(
             <div className="elem_in_search">{this.props.headdata.map((data, index) => {
                     if(this.state.filter != '') {
@@ -40,7 +40,7 @@ var FluxCalendarHead = React.createClass({
         )
     },
 
-    render: function() {
+    render() {
         return(
             <div>
                 <div>

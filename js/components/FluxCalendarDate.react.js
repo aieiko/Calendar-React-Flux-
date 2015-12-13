@@ -6,18 +6,17 @@ var FluxActions = require('../actions/FluxActions');
 
 var FluxCalendarDate = React.createClass({
 
-    prevDate: function(event) {
+    prevDate(event) {
         var newDate = new Date();
         newDate.setMonth(this.props.date.getMonth() - 1);
         newDate.setFullYear(this.props.date.getFullYear());
         if(newDate.getMonth() == 11) {
             newDate.setFullYear(this.props.date.getFullYear() - 1);
         }
-        console.log(newDate);
         FluxActions.changeDate(newDate);
     },
 
-    nextDate: function(event) {
+    nextDate(event) {
         var newDate = new Date();
         newDate.setMonth(this.props.date.getMonth() + 1);
         newDate.setFullYear(this.props.date.getFullYear());
@@ -28,7 +27,7 @@ var FluxCalendarDate = React.createClass({
     },
 
 
-    render: function() {
+    render() {
         var arrMonth = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
         return(
             <div>

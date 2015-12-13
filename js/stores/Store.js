@@ -50,6 +50,10 @@ function loadData(data) {
     _data = data;
 }
 
+function dropData (drop) {
+    console.log('not work');
+}
+
 var Store = _.extend({}, EventEmitter.prototype, {
 
     getData: function() {
@@ -126,6 +130,10 @@ AppDispatcher.register(function(payload) {
 
         case FluxConstants.EDIT_DATA:
             editData(action.editData);
+            break;
+
+        case FluxConstants.DROP_DATA:
+            dropData(action.dropData);
             break;
 
         default:

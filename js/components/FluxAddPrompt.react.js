@@ -7,7 +7,7 @@ var FluxActions = require('../actions/FluxActions');
 
 var FluxAddPrompt = React.createClass({
 
-    getInitialState: function() {
+    getInitialState() {
         return {
             fname:'',
             fdate:'',
@@ -15,20 +15,20 @@ var FluxAddPrompt = React.createClass({
             fdescription: ''
         }
     },
-    handleNameChange: function(event) {
+    handleNameChange(event) {
             this.setState({fname: event.target.value})
     },
-    handleDateChange: function(event) {
+    handleDateChange(event) {
         this.setState({fdate: event.target.value})
     },
-    handlePartChange: function(event) {
+    handlePartChange(event) {
         this.setState({fparticipants: event.target.value})
     },
-    handleDescChange: function(event) {
+    handleDescChange(event) {
         this.setState({fdescription: event.target.value})
     },
 
-    addData: function() {
+    addData() {
         var update = {
             id: Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000,
             name: this.state.fname,
@@ -36,25 +36,24 @@ var FluxAddPrompt = React.createClass({
             participants: this.state.fparticipants,
             description: this.state.fdescription
         };
-        console.log(update);
         FluxActions.updateData(update);
         this.dropData();
         FluxActions.updateVisible(false);
     },
-    dropData: function() {
+    dropData() {
         this.setState({fname: ''});
             this.state.fdate = '';
             this.state.fparticipants = '';
             this.state.fdescription = '';
     },
 
-    closeFormAdd: function() {
+    closeFormAdd() {
         FluxActions.updateVisible(false);
         this.dropData();
     },
 
 
-    render: function() {
+    render() {
         return(
             <div className={"hol "+(this.props.visible ? 'active' : '')}>
                 <button className="close"onClick={this.closeFormAdd}>X</button>

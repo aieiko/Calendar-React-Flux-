@@ -6,30 +6,35 @@ var FluxActions = require('../actions/FluxActions');
 
 var FluxEditPrompt = React.createClass({
 
-    getInitialState: function() {
+    getInitialState() {
         return {
             description: '',
             even: 0
         };
     },
 
-    handleDescChange: function(event) {
+    handleDescChange(event) {
         this.setState({description: event.target.value});
         this.state.even = 1;
     },
 
-    dropData: function() {
+    dropData() {
+        var dropThis = {
+            id: this.props.usedata.id,
+            description: this.state.description
+        };
+        FluxActions.dropThis(dropThis);
         this.setState({description: ''});
         this.state.even = 0;
     },
 
-    closeFormEdit: function() {
+    closeFormEdit() {
         FluxActions.updateVisible(false);
         FluxActions.updateEditVisible(false);
         this.dropData();
     },
 
-    editData: function() {
+    editData() {
         var editThis = {
             id: this.props.usedata.id,
             description: this.state.description
@@ -39,7 +44,7 @@ var FluxEditPrompt = React.createClass({
         this.closeFormEdit();
     },
 
-    render: function() {
+    render() {
         if(this.state.even == 0) {
             this.state.description = this.props.usedata.description;
         }

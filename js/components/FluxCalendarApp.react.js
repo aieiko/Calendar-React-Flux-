@@ -23,20 +23,20 @@ function getState() {
 
 var FluxCalendarApp = React.createClass({
 
-    getInitialState: function() {
+    getInitialState() {
         return getState();
     },
 
-    componentDidMount: function() {
+    componentDidMount() {
         Store.addChangeListener(this._onChange);
     },
 
     // Remove change listers from stores
-    componentWillUnmount: function() {
+    componentWillUnmount() {
         Store.removeChangeListener(this._onChange);
     },
 
-    render: function() {
+    render() {
 
 
         return (
@@ -51,7 +51,7 @@ var FluxCalendarApp = React.createClass({
         );
     },
 
-    _onChange: function() {
+    _onChange() {
         this.setState(getState());
     }
 

@@ -13,6 +13,7 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "reactify": "^1.1.1",
+    "react-bootstrap": "^0.28.1",
     "underscore": "^1.8.3",
     "watchify": "^3.6.1"
   },

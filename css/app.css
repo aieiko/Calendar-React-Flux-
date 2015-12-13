@@ -44,3 +44,9 @@
     width: 13%;
     position: absolute;
 }
+.this_month {
+    border: 1px solid blue;
+}
+.other_month {
+    opacity: .5;
+}
