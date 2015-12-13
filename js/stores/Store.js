@@ -1,7 +1,7 @@
 /**
  * Created by aieiko on 08.12.15.
  */
-
+"use strict"
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var FluxConstants = require('../constants/FluxConstants');
@@ -10,8 +10,8 @@ var _ = require('underscore');
 var _data = {}, _d = new Date(), _visible = false, _editvisible = false, _useData = {}, _fastvisible=false;
 
 function editData(edit) {
-    "use strict"
     for(let i=0; i<=_data.length; i++) {
+        console.log(_data[i]);
         if(edit.id ==_data[i].id) {
             _data[i].description = edit.description;
             localStorage.setItem('data', JSON.stringify(_data));
@@ -51,7 +51,21 @@ function loadData(data) {
 }
 
 function dropData (drop) {
-    console.log('not work');
+    var newData = [];
+
+    for(let i = 0; i<=_data.length-1; i++) {
+        if( _data[i].id == drop ) {
+            delete _data[i];
+        } else {
+            if(newData.length >= 0) {
+                newData.push(_data[i]);
+            } else {
+                newData = _data[i];
+            }
+        }
+    }
+    localStorage.setItem('data', JSON.stringify(newData));
+    loadData(newData);
 }
 
 var Store = _.extend({}, EventEmitter.prototype, {

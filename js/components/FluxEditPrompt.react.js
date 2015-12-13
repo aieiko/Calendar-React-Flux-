@@ -19,19 +19,16 @@ var FluxEditPrompt = React.createClass({
     },
 
     dropData() {
-        var dropThis = {
-            id: this.props.usedata.id,
-            description: this.state.description
-        };
+        var dropThis = this.props.usedata.id;
+
         FluxActions.dropThis(dropThis);
-        this.setState({description: ''});
         this.state.even = 0;
+        this.closeFormEdit();
     },
 
     closeFormEdit() {
         FluxActions.updateVisible(false);
         FluxActions.updateEditVisible(false);
-        this.dropData();
     },
 
     editData() {
