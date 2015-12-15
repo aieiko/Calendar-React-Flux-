@@ -51,21 +51,14 @@ function loadData(data) {
 }
 
 function dropData (drop) {
-    var newData = [];
 
     for(let i = 0; i<=_data.length-1; i++) {
         if( _data[i].id == drop ) {
-            delete _data[i];
-        } else {
-            if(newData.length >= 0) {
-                newData.push(_data[i]);
-            } else {
-                newData = _data[i];
-            }
+            _data.splice(i, 1);
         }
     }
-    localStorage.setItem('data', JSON.stringify(newData));
-    loadData(newData);
+
+    localStorage.setItem('data', JSON.stringify(_data));
 }
 
 var Store = _.extend({}, EventEmitter.prototype, {
